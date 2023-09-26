@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkingClock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="clock">
+        <div class="hour">
+            <div class="hr" id="hr"></div>
+        </div>
+        <div class="min">
+            <div class="mn" id="mn"></div>
+        </div>
+        <div class="sec">
+            <div class="sc" id="sc"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const deg = 6;
+        const hh = document.querySelector('#hr');
+        const mm = document.querySelector('#mn');
+        const ss = document.querySelector('#sc');
+
+        setInterval(() => {
+            let day = new Date();
+            let hr = day.getHours() * 30;
+            let mn = day.getMinutes() * deg;
+            let sc = day.getSeconds() * deg;
+
+            hh.style.transform = `rotateZ(${hr + (mn / 12)}deg)`;
+            mm.style.transform = `rotateZ(${mn}deg)`;
+            ss.style.transform = `rotateZ(${sc}deg)`;
+        }, 1000); // Update every second
+    </script>
+</body>
+</html>
